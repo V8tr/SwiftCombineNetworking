@@ -12,8 +12,12 @@ struct User: Codable {
     let id: Int
 }
 
-struct Order: Codable {}
+struct Repository: Codable {
+    let id: Int
+    let name: String
+    let description: String?
+}
 
-struct Product: Codable {}
-
-struct ShipmentStatus: Codable {}
+struct Issue: Codable {
+    let id: Int
+}

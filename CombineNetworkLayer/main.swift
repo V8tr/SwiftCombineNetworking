@@ -9,27 +9,35 @@
 import Foundation
 import Combine
 
-let storage = Storage()
-let agent = Agent()
+// MARK: - Chain
 
-// MARK: - Sequence
+func chain() {
+    let me = "V8tr"
+    let repos = GithubAPI.repos(username: me)
+    let firstRepo = repos.compactMap { $0.first }
+    let issues = firstRepo.flatMap { repo in
+        GithubAPI.issues(repo: repo.name, owner: me)
+    }
+    
+    let token = issues.sink(receiveCompletion: { _ in },
+                            receiveValue: { print($0) })
+    
+    RunLoop.main.run(until: Date(timeIntervalSinceNow: 10))
 
-let savedUser = agent.login(username: "U1", password: "P1")
-    .handleEvents(receiveOutput: storage.save) // Side effects
+    withExtendedLifetime(token, {})
+}
 
-let orders = savedUser
-    .flatMap(agent.orders(by:))
-    .replaceError(with: [])
-    .sink(receiveCompletion: { _ in },
-          receiveValue: { orders in print(orders) })
 
 // MARK: - Parallel
 
-let orderId = 1
+func parallel() {
+    let members = GithubAPI.members(org: "apple")
+    let repos = GithubAPI.repos(org: "apple")
+    let token = Publishers.Zip(members, repos)
+        .sink(receiveCompletion: { _ in },
+              receiveValue: { (members, repos) in print(members, repos) })
 
-let orderDetails = agent.orderDetails(orderId: orderId)
-let shipmentStatus = agent.orderShipmentStatus(orderId: orderId)
+    RunLoop.main.run(until: Date(timeIntervalSinceNow: 10))
 
-let fullData = Publishers.Zip(orderDetails, shipmentStatus)
-    .sink(receiveCompletion: { _ in },
-          receiveValue: { details, shipment in () })
+    withExtendedLifetime(token, {})
+}

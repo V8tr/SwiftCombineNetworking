@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		807DAA14237F0C34005BB51F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807DAA13237F0C34005BB51F /* main.swift */; };
 		809BF5D72382C3F4003997FF /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809BF5D62382C3F4003997FF /* Agent.swift */; };
-		809BF5D92382C436003997FF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809BF5D82382C436003997FF /* Storage.swift */; };
 		809BF5DB2382C4E0003997FF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809BF5DA2382C4E0003997FF /* Model.swift */; };
-		809BF5DD2382C4F9003997FF /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809BF5DC2382C4F9003997FF /* APIs.swift */; };
+		809BF5DF2383FF5C003997FF /* Github.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809BF5DE2383FF5C003997FF /* Github.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,9 +29,8 @@
 		807DAA10237F0C34005BB51F /* CombineNetworkLayer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CombineNetworkLayer; sourceTree = BUILT_PRODUCTS_DIR; };
 		807DAA13237F0C34005BB51F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		809BF5D62382C3F4003997FF /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
-		809BF5D82382C436003997FF /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		809BF5DA2382C4E0003997FF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		809BF5DC2382C4F9003997FF /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		809BF5DE2383FF5C003997FF /* Github.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Github.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +63,10 @@
 		807DAA12237F0C34005BB51F /* CombineNetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
-				807DAA13237F0C34005BB51F /* main.swift */,
 				809BF5D62382C3F4003997FF /* Agent.swift */,
-				809BF5D82382C436003997FF /* Storage.swift */,
+				809BF5DE2383FF5C003997FF /* Github.swift */,
+				807DAA13237F0C34005BB51F /* main.swift */,
 				809BF5DA2382C4E0003997FF /* Model.swift */,
-				809BF5DC2382C4F9003997FF /* APIs.swift */,
 			);
 			path = CombineNetworkLayer;
 			sourceTree = "<group>";
@@ -132,10 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809BF5DF2383FF5C003997FF /* Github.swift in Sources */,
 				809BF5D72382C3F4003997FF /* Agent.swift in Sources */,
 				807DAA14237F0C34005BB51F /* main.swift in Sources */,
-				809BF5D92382C436003997FF /* Storage.swift in Sources */,
-				809BF5DD2382C4F9003997FF /* APIs.swift in Sources */,
 				809BF5DB2382C4E0003997FF /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

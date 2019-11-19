@@ -12,27 +12,19 @@ import Combine
 struct Agent {
     let session = URLSession.shared
     
-    struct Response<T> where T: Decodable {
+    struct Response<T> {
         let value: T
         let response: URLResponse
     }
     
-    func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {
-        let dataTask = session
+    func run<T: Decodable>(_ request: URLRequest, _ decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<Response<T>, Error> {
+        return URLSession.shared
             .dataTaskPublisher(for: request)
-        
-        let value = dataTask
-            .map { $0.data }
-            .decode(type: T.self, decoder: JSONDecoder())
-            .mapError { $0 as Error }
-        
-        let response = dataTask
-            .map { $0.response }
-            .mapError { $0 as Error }
-        
-        return Publishers.Zip(value, response)
-            .map(Response.init)
+            .tryMap { result -> Response<T> in
+                let value = try decoder.decode(T.self, from: result.data)
+                return Response(value: value, response: result.response)
+            }
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
-
